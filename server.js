@@ -13,7 +13,7 @@ app.post('/submit-form', (req, res) => {
   let age = req.body.age;
   let email = req.body.email;
   console.log("post " + name)
-  res.redirect('/?name=' + eq.body.name + '/?age');
+  res.redirect('/?name=' + req.body.name + '/?age');
   return res.end();
 })
 
