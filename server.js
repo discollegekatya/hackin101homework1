@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const fs = require('fs');
 const port = 8000;
 
 app.engine('html', require('ejs').renderFile);
