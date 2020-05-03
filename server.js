@@ -2,32 +2,39 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 app.set("view engine", "ejs"); 
 app.set('views', __dirname);
 app.use(express.urlencoded());
 
+let holidaysText = 'Каникулы нужны человеку, чтобы ... ';
+let eggsText = 'Яйцы варят ровно ... ';
+let ninaText = 'Баба Нина живет ... ';
+let jackRabbitText = 'Заяц тот еще зверь ... ';
+
+let submittedHolidays = holidaysText;
+let submittedEggs = eggsText;
+let submittedNina = ninaText;
+let submittedJackRabbit = jackRabbitText;
+
 app.post('/submit-form', (req, res) => {
-  let name = req.body.name;
-  let age = req.body.age;
-  let email = req.body.email;
-  console.log("post " + name)
-  res.redirect('/?name=' + req.body.name + '/?age');
+  submittedHolidays = holidaysText + req.body.holidays;
+  submittedEggs = eggsText + req.body.eggs;
+  submittedNina = ninaText + req.body.nina;
+  submittedJackRabbit = jackRabbitText + req.body.jackrabbit;
+  res.redirect('/');
   return res.end();
-})
+});
 
 app.get('/', (req, res) => {
-  console.log(req.query.myname);
-  res.render("index", { name: 'KKK' });
-  // fs.readFile('main.html', function(err, data) {
-  //   res.writeHead(200, {'Content-Type': 'text/html'});
-  //   res.write(data);
-  //   return res.end();
-  // });
-
+  res.render("index", { 
+    submittedHolidays: submittedHolidays,
+    submittedEggs: submittedEggs,
+    submittedNina: submittedNina,
+    submittedJackRabbit: submittedJackRabbit});
 });
 
 app.listen(port, (err) => {
     console.log(`Server is listening on ${port}`);
-})
+});

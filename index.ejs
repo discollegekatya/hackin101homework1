@@ -6,16 +6,18 @@
  </head>
  <body>
   <form action="/submit-form" method="post">
-    <input id="name" type="text" name="name" value="What's your name?">
-    <input id="age" type="text" name="age" value="What's your age?">
-    <input id="email" type="text" name="email" value="What's your email?">
-    <input type="submit" value="OK">
+    <p><input id="holidays" type="text" name="holidays" placeholder="Зачем человеку каникулы?" size=100pxl></p>
+    <p><input id="eggs" type="text" name="eggs" placeholder="Сколько варить яйца?" size=100pxl></p>
+    <p><input id="nina" type="text" name="nina" placeholder="Где проживает баба Нина?" size=100pxl></p>
+    <p><input id="jackrabbit" type="text" name="jackrabbit" placeholder="Расскажи о зайце, его характере и поступках" size=100pxl></p>
+    <p><input type="submit" value="Submit">
   </form>
   <div>
   <ul>
-    <li><% name %></li>>
-    <li></li>>
-    <li></li>>
+    <li><%= submittedHolidays %></li>
+    <li><%= submittedEggs %></li>
+    <li><%= submittedNina %></li>
+    <li><%= submittedJackRabbit %></li>
   </ul>
   </div>
  </body>
